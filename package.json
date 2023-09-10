@@ -1,0 +1,16 @@
+{
+  "name": "codingtest-birdhouse-js",
+  "version": "0.0.1",
+  "description": "An example module that fetches data from a birdhouse API.",
+  "author": "DanielOaks",
+  "license": "CC0-1.0",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "ky": "^1.0.1"
+  }
+}
