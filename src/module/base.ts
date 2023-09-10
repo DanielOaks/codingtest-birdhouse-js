@@ -8,6 +8,9 @@ export abstract class BaseModule {
   protected async request(endpoint: string, options?: any): Promise<any> {
     return new Promise(async (resolve, reject) => {
       try {
+        if (options === undefined) {
+          options = {}
+        }
         options['prefixUrl'] = this.options.apiBase;
 
         const res = await ky(endpoint, options);

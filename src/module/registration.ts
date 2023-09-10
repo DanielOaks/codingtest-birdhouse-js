@@ -28,10 +28,10 @@ export interface GetRegistrationsResponse {
 }
 
 export class BhRegistrationRequests extends BaseModule {
-  public async getRegistrations(options: GetRegistrationsRequest): Promise<GetRegistrationsResponse> {
+  public async getRegistrations(info: GetRegistrationsRequest): Promise<GetRegistrationsResponse> {
     const queryParams = new URLSearchParams();
-    queryParams.append('page', options.page.toString());
-    queryParams.append('limit', options.limit.toString());
+    queryParams.append('page', info.page.toString());
+    queryParams.append('limit', info.limit.toString());
     return this.request(`registration?${ queryParams.toString() }`);
   }
 }
