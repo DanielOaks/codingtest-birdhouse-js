@@ -1,6 +1,6 @@
 {
   "name": "@danieloaks/codingtest-birdhouse-js",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "An example module that fetches data from a birdhouse API.",
   "author": "DanielOaks",
   "license": "CC0-1.0",
