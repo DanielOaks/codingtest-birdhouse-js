@@ -1,4 +1,4 @@
-import { BhRegistrationRequests } from "./registration";
+import { BhRegistrationRequests, Registration } from "./registration";
 import { setupServer } from "msw/node";
 import { rest } from "msw";
 
@@ -72,7 +72,23 @@ test("basic pages request", async () => {
   const res = await api.getRegistrationPage(1, 2);
 
   expect(res.meta).toEqual(registrationPageData.meta);
-  expect(res.items).toEqual(registrationPageData.items);
+  for (const [index, item] of res.items.entries()) {
+    // we do this because the lastOccupationUpdate is a string in the request
+    //  and a Date in the response
+    const comparedItem: Registration = {
+      value: registrationPageData.items[index].value,
+      birdhouse: {
+        ubidValue: registrationPageData.items[index].birdhouse?.ubidValue,
+        name: registrationPageData.items[index].birdhouse?.name,
+        latitude: registrationPageData.items[index].birdhouse?.latitude,
+        longitude: registrationPageData.items[index].birdhouse?.longitude,
+        lastOccupationUpdate: new Date(
+          registrationPageData.items[index].birdhouse?.lastOccupationUpdate,
+        ),
+      },
+    };
+    expect(item).toEqual(comparedItem);
+  }
 });
 
 test("basic registration request", async () => {
