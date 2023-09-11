@@ -48,6 +48,13 @@ export const handlers = [
     }
     return res(ctx.status(400));
   }),
+
+  rest.get(
+    "http://localhost/registration/4336686c-ea77-46e6-ad72-fa38d8dacdeb",
+    (req, res, ctx) => {
+      return res(ctx.json(registrationPageData.items[0]));
+    },
+  ),
 ];
 
 const server = setupServer(...handlers);
@@ -66,4 +73,14 @@ test("basic pages request", async () => {
 
   expect(res.meta).toEqual(registrationPageData.meta);
   expect(res.items).toEqual(registrationPageData.items);
+});
+
+test("basic registration request", async () => {
+  const api = new BhRegistrationRequests({
+    apiBase: "http://localhost/",
+  });
+
+  const res = await api.getRegistration(registrationPageData.items[0].value);
+
+  expect(res).toEqual(registrationPageData.items[0]);
 });

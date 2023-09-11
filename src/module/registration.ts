@@ -36,4 +36,9 @@ export class BhRegistrationRequests extends BaseModule {
     );
     return response;
   }
+
+  public async getRegistration(ubid: string): Promise<Registration> {
+    const response: Registration = await this.request(`registration/${ubid}`);
+    return response;
+  }
 }
