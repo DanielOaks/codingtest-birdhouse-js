@@ -19,19 +19,25 @@ export interface Registration {
 export interface GetRegistrationsResponse {
   items: Registration[];
   meta: {
-    totalItems: number,
-    itemCount: number,
-    itemsPerPage: number,
-    totalPages: number,
-    currentPage: number,
+    totalItems: number;
+    itemCount: number;
+    itemsPerPage: number;
+    totalPages: number;
+    currentPage: number;
   };
 }
 
 export class BhRegistrationRequests extends BaseModule {
-  public async getRegistrationPage(info: GetRegistrationsRequest): Promise<GetRegistrationsResponse> {
+  public async getRegistrationPage(
+    info: GetRegistrationsRequest,
+  ): Promise<GetRegistrationsResponse> {
     const queryParams = new URLSearchParams();
-    queryParams.append('page', info.page.toString());
-    queryParams.append('limit', info.limit.toString());
-    return this.request(`registration?${ queryParams.toString() }`);
+    queryParams.append("page", info.page.toString());
+    queryParams.append("limit", info.limit.toString());
+
+    const response: GetRegistrationsResponse = await this.request(
+      `registration?${queryParams.toString()}`,
+    );
+    return response;
   }
 }
