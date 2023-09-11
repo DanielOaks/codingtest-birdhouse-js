@@ -1,5 +1,8 @@
 import ky from 'ky';
-import { BhSetupOptions } from '../interface/birdhouse.setup.options';
+
+export interface BhSetupOptions {
+  apiBase: string;
+}
 
 export abstract class BaseModule {
 

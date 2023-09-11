@@ -1,4 +1,4 @@
-import { BhSetupOptions } from "./interface/birdhouse.setup.options";
+import { BhSetupOptions } from "./module/base";
 import { BhRegistrationRequests } from "./module/registration";
 
 export default class BhApi {
