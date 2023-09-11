@@ -1,10 +1,5 @@
 import { BaseModule } from "./base";
 
-export interface GetRegistrationsRequest {
-  page: number;
-  limit: number;
-}
-
 export interface Registration {
   value: string;
   birdhouse?: {
@@ -29,11 +24,12 @@ export interface GetRegistrationsResponse {
 
 export class BhRegistrationRequests extends BaseModule {
   public async getRegistrationPage(
-    info: GetRegistrationsRequest,
+    page: number,
+    limit: number,
   ): Promise<GetRegistrationsResponse> {
     const queryParams = new URLSearchParams();
-    queryParams.append("page", info.page.toString());
-    queryParams.append("limit", info.limit.toString());
+    queryParams.append("page", page.toString());
+    queryParams.append("limit", limit.toString());
 
     const response: GetRegistrationsResponse = await this.request(
       `registration?${queryParams.toString()}`,
