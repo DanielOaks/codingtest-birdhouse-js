@@ -7,7 +7,7 @@ export interface Registration {
     name: string;
     longitude: number;
     latitude: number;
-    lastOccupationUpdate: string;
+    lastOccupationUpdate: Date;
   };
 }
 
@@ -31,9 +31,36 @@ export class BhRegistrationRequests extends BaseModule {
     queryParams.append("page", page.toString());
     queryParams.append("limit", limit.toString());
 
-    const response: GetRegistrationsResponse = await this.request(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const tempResponse: any = await this.request(
       `registration?${queryParams.toString()}`,
     );
+    const response: GetRegistrationsResponse = {
+      meta: {
+        totalItems: tempResponse.meta.totalItems,
+        itemCount: tempResponse.meta.itemCount,
+        itemsPerPage: tempResponse.meta.itemsPerPage,
+        totalPages: tempResponse.meta.totalPages,
+        currentPage: tempResponse.meta.currentPage,
+      },
+      items: [],
+    };
+    for (const item of tempResponse.items) {
+      const newItem: Registration = {
+        value: item.value,
+      };
+      if (item.birdhouse) {
+        newItem.birdhouse = {
+          ubidValue: item.birdhouse.ubidValue,
+          name: item.birdhouse.name,
+          longitude: item.birdhouse.longitude,
+          latitude: item.birdhouse.latitude,
+          lastOccupationUpdate: new Date(item.birdhouse.lastOccupationUpdate),
+        };
+      }
+      response.items.push(newItem);
+    }
+
     return response;
   }
 
