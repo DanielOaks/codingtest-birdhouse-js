@@ -1,12 +1,13 @@
 {
   "name": "@danieloaks/codingtest-birdhouse-js",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "description": "An example module that fetches data from a birdhouse API.",
   "author": "DanielOaks",
   "license": "CC0-1.0",
   "source": "src/index.ts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },

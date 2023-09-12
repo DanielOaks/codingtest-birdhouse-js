@@ -1,6 +1,6 @@
-import { BhSetupOptions } from "./module/base";
-import { BhRegistrationRequests } from "./module/registration";
-import { BhOccupancyRequests } from "./module/occupancy";
+import { BhSetupOptions } from "./module/base.js";
+import { BhRegistrationRequests } from "./module/registration.js";
+import { BhOccupancyRequests } from "./module/occupancy.js";
 
 export default class BhApi {
   constructor(private readonly options: BhSetupOptions) {}
