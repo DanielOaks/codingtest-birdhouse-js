@@ -1,6 +1,6 @@
 {
   "name": "@danieloaks/codingtest-birdhouse-js",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "An example module that fetches data from a birdhouse API.",
   "author": "DanielOaks",
   "license": "CC0-1.0",
@@ -12,6 +12,8 @@
     "access": "public"
   },
   "scripts": {
+    "clean": "rimraf ./dist",
+    "prebuild": "npm run clean",
     "build": "tsc",
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
     "lint:js": "eslint --ext \".ts\" --ignore-path .gitignore .",
@@ -27,6 +29,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "msw": "^1.3.0",
     "prettier": "3.0.3",
+    "rimraf": "^5.0.1",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
