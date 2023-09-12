@@ -1,5 +1,7 @@
 # birdhouse-js
 
+[![npm version](https://badge.fury.io/js/@danieloaks%2Fcodingtest-birdhouse-js.svg)](https://badge.fury.io/js/@danieloaks%2Fcodingtest-birdhouse-js) ![Test status](https://github.com/DanielOaks/shockbyte-birdhouse-js/actions/workflows/ci.yml/badge.svg)
+
 This is a typescript wrapper around the Shockbyte BirdHouse API.
 
 ## Usage
