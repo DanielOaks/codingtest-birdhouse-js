@@ -1,4 +1,4 @@
-import { BaseModule } from "./base.js";
+import { BaseModule } from "./base";
 
 export interface OccupancyState {
   id: string;
